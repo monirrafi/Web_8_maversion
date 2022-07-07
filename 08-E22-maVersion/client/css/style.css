@@ -99,3 +99,15 @@ select#idanimaux {
     float: left;
     font-size: 18px;
 }
+
+
+/* Pour le select musique */
+
+select#idpays {
+    background-color:#F1A767 ;
+    color: white;
+    padding: 12px;
+    width: 175px;
+    font-size: 14px;
+}
+
