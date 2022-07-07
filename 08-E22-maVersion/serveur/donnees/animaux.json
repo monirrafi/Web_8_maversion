@@ -1,0 +1,23 @@
+[
+    {
+    "nom" : " Lion " ,
+    "espece" : " Animal(mammifère) sauvage "
+    },
+    {
+    "nom" : " Singe " ,
+    "espece" : " Mammifères placentaires " 
+    },{
+       "nom" : " Hibou " ,
+      "espece" : " Oiseau " 
+    },{
+       "nom" : " Paon " ,
+      "espece" : " Oiseau " 
+      
+    },{
+       "nom" : " Piégon " ,
+      "espece" : " Oiseau " 
+    },{ 
+      "nom" : " Zèbre " ,
+      "espece" : " Mammifère " 
+    }
+    ]

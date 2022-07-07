@@ -1,28 +1,3 @@
-//JSON-JavaScript Objet Notation: [] tableau indicé {} objet
-//let tab = [2,4,6,8];
-//let obj = {"titre":"Le soleil couchant","pages":350,"categorie":"Jeunesse"};
-//let tabObj = [{"a":1,"b":2},{"a":3,"b":4},{"a":5,"b":6}];
-// En technologie XML
-/*{ <listeObjs>
-    <obj>
-        <a>1</a>
-        <b>2</b>
-    </obj>
-    <obj>
-        <a>3</a>
-        <b>4</b>
-    </obj>
-    <obj>
-        <a>5</a>
-        <b>6</b>
-    </obj>
-</listeObjs> }*/
-//Comme table d'une base de données
-//    tabObj
-//    a   b
-//    1   2
-//    3   4
-//    5   6
 
 
 let membres = [
@@ -60,7 +35,7 @@ let enregistrerMembre = () => {
     setTimeout(() => {
         document.getElementById('formEnregErr').innerHTML="";
         document.getElementById('formEnreg').reset();
-        $('#modalEnreg').modal('hide');
+        basculerVisibilteModal('modalEnreg','cacher');
     }, 5000);
 }
 

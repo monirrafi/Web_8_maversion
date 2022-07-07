@@ -13,7 +13,7 @@ let seConnecter = () => {
         if(uneConnexion.courriel == courriel && uneConnexion.pass == pass){
             if(uneConnexion.statut == "A") {
                 document.getElementById('formConnexion').reset(); //Vider le formulaire
-                $('#modalConnexion').modal('hide'); //Cacher le modal de id modalConnexion
+                basculerVisibilteModal('modalConnexion','cacher'); //Cacher le modal de id modalConnexion
                 window.open('client/pages/membre.html');//rediriger vers la page membre.html
             } else {
                 msgErr="Impossible de vous connecter. Contactez l'administrateur.";
@@ -30,3 +30,7 @@ let seConnecter = () => {
              document.getElementById('formConnexion').reset();
         }, 5000);
     }
+
+let rtn = () => {
+   window.open("../../index.html");
+}

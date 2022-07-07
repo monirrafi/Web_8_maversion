@@ -51,6 +51,12 @@ let librairie = {
 }
 let cheminLivres = "../images/livres/";
 let cheminPapeterie = "../images/papeterie/";
+let totalLivre = 0;
+let totalPapeterie = 0;
+let totalFacture = 0;
+let totalTaxes = 0;
+const TAXES = 0.1556;
+
 let initialiser = () => {
     document.getElementById('imgLivre').src = cheminLivres+librairie.livres[0].image;
     document.getElementById('titreLivre').innerHTML = librairie.livres[0].titre;
@@ -73,4 +79,53 @@ let initialiser = () => {
     for(let unPap of tabPapeteries){
         selPap.options[selPap.options.length] = new Option(unPap.titre,unPap.id);
     }
+}
+
+let traiterLivre = () => {
+    let selLivres = document.getElementById('selLivres');
+    let idLivre = selLivres.options[selLivres.selectedIndex].value;
+    let objLivre = librairie.livres.find(unLivre =>unLivre.id == idLivre);
+
+    document.getElementById('imgLivre').src = cheminLivres+objLivre.image;
+    document.getElementById('titreLivre').innerHTML = objLivre.titre;
+    document.getElementById('prixLivre').innerHTML = objLivre.prix+"$";
+    document.getElementById('infosLivre').innerHTML = "Auteur : "+objLivre.auteur+"<br>Pages : "+objLivre.pages;
+
+    //Calcul de la facture pour le livre
+    totalLivre = objLivre.prix;
+    totalTaxes = (totalLivre+totalPapeterie)*TAXES;
+    totalFacture = totalLivre+totalPapeterie+totalTaxes;
+    totalFacturePayer();
+}
+
+let traiterPap = () => {
+    let selPap = document.getElementById('selPap');
+    let idPap = selPap.options[selPap.selectedIndex].value;
+    let objPap = librairie.papeteries.find(unPap =>unPap.id == idPap);
+
+    document.getElementById('imgPap').src = cheminPapeterie+objPap.image;
+    document.getElementById('titrePap').innerHTML = objPap.titre;
+    document.getElementById('prixPap').innerHTML = objPap.prix+"$";
+    document.getElementById('infosPap').innerHTML = "Sujet : "+objPap.sujet;
+
+    //Calcul de la facture pour la papeterie
+    totalPapeterie = objPap.prix;
+    totalTaxes = (totalPapeterie+totalLivre)*TAXES;
+    totalFacture = totalPapeterie+totalLivre+totalTaxes;
+    totalFacturePayer();
+}
+
+function totalFacturePayer() {
+    let facture = " ";
+    if(totalLivre > 0){
+        facture+=" <b>Livre = </b>"+totalLivre.toFixed(2)+"$ ";
+        //totalLivre = 0;
+    }
+    if(totalPapeterie > 0){
+        facture+="   <b>Papeterie = </b>"+totalPapeterie.toFixed(2)+"$ ";
+        //totalPapeterie = 0;
+    }
+    facture+="   <b>totalTaxes = </b>"+totalTaxes.toFixed(2)+"$ ";
+    facture+="<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;À PAYER = </b>"+totalFacture.toFixed(2)+"$";
+    document.getElementById('facture').innerHTML = facture;
 }
